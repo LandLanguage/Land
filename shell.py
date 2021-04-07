@@ -1,7 +1,7 @@
 
 import basic
 
-print("Land 1.0.1")
+print("Land 1.1.3")
 
 while True:
 	text = input('>> ')
