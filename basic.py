@@ -1,8 +1,8 @@
-#########################
+
 # Please do not use these source codes without permission.
-#############################
 
 
+# v1.1.3
 
 #######################################
 # IMPORTS
@@ -33,6 +33,8 @@ class Error:
         self.pos_end = pos_end
         self.error_name = error_name
         self.details = details
+        
+    
 
     def as_string(self):
         result = f'{self.error_name}: {self.details}\n'
@@ -145,6 +147,7 @@ KEYWORDS = [
     'ELIF',
     'ELSE',
     'FOR',
+    'HELP',
     'TO',
     'STEP',
     'WHILE',
@@ -153,6 +156,7 @@ KEYWORDS = [
     'EXIT',
     'END',
     'RETURN',
+    'INFO',
     'CONTINUE',
     'BREAK',
 ]
@@ -673,7 +677,7 @@ class Parser:
         if res.error:
             return res.failure(InvalidSyntaxError(
                 self.current_tok.pos_start, self.current_tok.pos_end,
-                "Expected 'RETURN', 'CONTINUE', 'BREAK', 'VAR', 'IF', 'FOR', 'WHILE', 'FUN', int, float, identifier, 'EXIT' '+', '-', '(', '[' or 'NOT'"
+                "Expected 'RETURN', 'CONTINUE', 'BREAK', 'VAR', 'IF', 'FOR', 'WHILE', 'FUN', int, float, identifier, 'EXIT', 'INFO', 'HELP', '+', '-', '(', '[' or 'NOT'"
             ))
         return res.success(expr)
 
@@ -778,7 +782,7 @@ class Parser:
                 if res.error:
                     return res.failure(InvalidSyntaxError(
                         self.current_tok.pos_start, self.current_tok.pos_end,
-                        "Expected ')', 'VAR', 'IF', 'FOR', 'WHILE', 'FUN', int, float, identifier, '+', '-', '(', '[' or 'NOT'"
+                        "Expected ')', 'HELP', 'INFO' 'VAR', 'IF', 'FOR', 'WHILE', 'FUN', int, float, identifier, '+', '-', '(', '[' or 'NOT'"
                     ))
 
                 while self.current_tok.type == TT_COMMA:
@@ -838,19 +842,32 @@ class Parser:
             if res.error: return res
             return res.success(list_expr)
 
+
         elif tok.matches(TT_KEYWORD, 'IF'):
             if_expr = res.register(self.if_expr())
             if res.error: return res
             return res.success(if_expr)
 
+        elif tok.matches(TT_KEYWORD, 'HELP'):
+            print("IF ifadesi, bir kod blokunu belli bir koşula bağlı olarak, else ve elif (else-if'ın kisaltmasi) ile birlikte çalıştırır.")
+            print("FOR ifadesi, yinelenebilir bir nesne üzerinden yineleme yapar, bu sırada ilgili bloktaki her ögeyi bir yerel değişkene atar.")
+            print("WHILE ifadesi, koşulu doğru olduğu sürece o kod blokunu çalıştırır.")
+            print("FUNC ifadesi ile fonksiyon tanımlanır.")
+            print("PRINT ifadesi bir ekrana yazdırma görevi görür.")
+
+        elif tok.matches(TT_KEYWORD, 'INFO'):
+            print(
+                "Land programlama dili - 2021 | Herkes tarafından geliştirilebilen açık kaynak kodlu programlama dili - Yusuf Emre Karagül")
+
+
         elif tok.matches(TT_KEYWORD, 'EXIT'):
-           exit()
+            exit()
 
 
 
-       
 
-        elif tok.matches(TT_KEYWORD, 'FOR'):
+
+        elif  tok.matches(TT_KEYWORD, 'FOR'):
             for_expr = res.register(self.for_expr())
             if res.error: return res
             return res.success(for_expr)
@@ -867,7 +884,7 @@ class Parser:
 
         return res.failure(InvalidSyntaxError(
             tok.pos_start, tok.pos_end,
-            "Expected int, float, identifier, '+', '-', '(', '[', IF', 'FOR', 'WHILE', 'FUN'"
+            "Expected int, float, identifier, '+', '-', '(', '[', IF', 'FOR', 'WHILE', 'FUN', 'HELP', 'INFO'"
         ))
 
     def list_expr(self):
