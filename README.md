@@ -8,6 +8,6 @@ Land programlama dili, Python dili kullanılarak tasarlanmıştır. Henüz tam o
 Land programlama dilinin şuanki sürümü "v1.1" beta sürümüdür. Ancak Land programlama dilinin sürümünü sizlerde Land programlama dilini geliştirerek kolayca arttırabilirsiniz.
 
 # Geliştirici(ler)
-Land programlama dilinin planlayıcısı ve geliştiricisi "Mikisoft" yazılım grubudur. Tabiki bu dil diğer insanlar tarafından geliştirilmeye açıktır. Land programlama dilini geliştirmek için bize katılmak zorunda değilsiniz, dili GitHub üzerinden geliştirip bize yollayabilirsiniz.
+Land programlama dilinin planlayıcısı ve geliştiricisi "Mikisoft" yazılım grubudur. Tabiki bu dil diğer insanlar tarafından geliştirilmeye açıktır yani tek geliştirici Mikisoft değildir. Land programlama dilini geliştirmek için bize katılmak zorunda değilsiniz, dili GitHub üzerinden geliştirip bize yollayabilirsiniz.
 
-Yolladığınız geliştirmeler bir kaç gün içinde ya da 1 gün içinde yayınlanabilir, bu süreler değişebilir.
+Yolladığınız geliştirmeler bir kaç gün içinde ya da 1 gün içinde yayınlanabilir, bu süreler değişebilir. Tabi bunun yanında geliştirmeleriniz onaylanmayabilir.
