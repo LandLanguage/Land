@@ -857,7 +857,7 @@ class Parser:
 
         elif tok.matches(TT_KEYWORD, 'INFO'):
             print(
-                "Land programlama dili - 2021 | Herkes tarafından geliştirilebilen açık kaynak kodlu programlama dili - Yusuf Emre Karagül")
+                "Land programlama dili - 2021 | Herkes tarafından geliştirilebilen açık kaynak kodlu programlama dili ")
 
 
         elif tok.matches(TT_KEYWORD, 'EXIT'):
